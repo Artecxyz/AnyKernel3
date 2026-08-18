@@ -10,7 +10,6 @@ do.modules=0
 do.systemless=0
 do.cleanup=1
 do.cleanuponabort=0
-do.check_boot_version=0
 device.name1=
 device.name2=
 device.name3=
@@ -35,10 +34,9 @@ no_magisk_check=1
 
 # boot install
 split_boot
-if [ -f "$SPLITIMG/ramdisk.cpio" ]; then
+if [ -f "split_img/ramdisk.cpio" ]; then
     unpack_ramdisk
     write_boot
 else
     flash_boot
 fi
-
