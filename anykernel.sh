@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=KernelSU by KernelSU Developers
+kernel.string=RedPanda GKI Kernel
 do.devicecheck=0
 do.modules=0
 do.systemless=0
@@ -32,17 +32,6 @@ no_magisk_check=1
 # import functions/variables and setup patching - see for reference (DO NOT REMOVE)
 . tools/ak3-core.sh
 
-kernel_version=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
-case $kernel_version in
-    5.1*) ksu_supported=true ;;
-    6.1*) ksu_supported=true ;;
-    6.6*) ksu_supported=true ;;
-    *) ksu_supported=false ;;
-esac
-
-ui_print " " "  -> ksu_supported: $ksu_supported"
-$ksu_supported || abort "  -> Non-GKI device, abort."
-
 # boot install
 split_boot
 if [ -f "split_img/ramdisk.cpio" ]; then
@@ -51,4 +40,3 @@ if [ -f "split_img/ramdisk.cpio" ]; then
 else
     flash_boot
 fi
-## end boot install
