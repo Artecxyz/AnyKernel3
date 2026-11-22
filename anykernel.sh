@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=RedPanda GKI Kernel
+kernel.string=GKI Kernel by @Artecxyz
 do.devicecheck=0
 do.modules=0
 do.systemless=0
@@ -46,10 +46,10 @@ min_ver=$(echo "$min_kernel_version" | awk -F. '{printf "%d%04d%04d", $1, $2, $3
 
 [ "$kernel_ver" -ge "$min_ver" ] && ksu_supported=true || ksu_supported=false
 
-ui_print " " "  -> Kernel version: ${kernel_version:-unknown} (min. $min_kernel_version)"
-ui_print " " "  -> ksu_supported: $ksu_supported"
-$ksu_supported && ui_print " " "  -> Kernel compatible!"
-$ksu_supported || abort "  -> Kernel ${kernel_version:-unknown} is not compatible, requires $min_kernel_version or newer."
+ui_print " " "-> Kernel version: ${kernel_version:-unknown} (min. $min_kernel_version)"
+ui_print " " "-> ksu_supported: $ksu_supported"
+$ksu_supported && ui_print " " "-> Kernel compatible!"
+$ksu_supported || abort "-> Kernel ${kernel_version:-unknown} is not compatible, requires $min_kernel_version or newer."
 
 # boot install
 split_boot
